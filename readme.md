@@ -12,9 +12,9 @@ GPT : ChaptGPT, Copilot, Gemini
 
 Le projet à été défini en suivant la construction d'objectif SMART, la répartition des tâches, un plan de travail. 
 
-L'objectif global est de réaliser une analyse complète et reproductible de la tâche circulaire enregistrée par MouseReMoCo et de livrer les résultats dans un dépôt GitHub public.
+L'objectif global est de réaliser une analyse complète la tâche circulaire, enregistrée par MouseReMoCo pour la reproduire et livrer les résultats dans un dépôt GitHub public.
 
-**Spécifique :** Reproduire les graphiques et recalculer les statistiques de la tâche de ciblage circulaire (Fitts' Law) en utilisant les fichiers de données brutes fournis et un fichier généré par l'équipe.
+**Spécifique :** Reproduire les graphiques et recalculer les statistiques de la tâche de ciblage circulaire (Circular TTask) en utilisant les fichiers de données brutes fournis (...) et un fichier généré par l'équipe (main).
 
 **Mesurable :**
 Les résultats sont vérifiés par : 
@@ -46,18 +46,21 @@ Responsabilités de Manager (Gestion de Projet):
 
 Responsabilités de Code (Analyse Circulaire):
 - Développer le code principal pour lire et analyser les données de la tâche circulaire.
-- Calculer les métriques spécifiques aux « ronds » : rayon effectif ($R_e$), tolérance effective ($T_e$), pourcentage d'erreur, et le nombre de tours (nLaps).
 - Vérifier les coordonnées du centre ($C_x, C_y$) et du rayon cible ($R_{task}$) à partir des données d'en-tête.
+- Identifier les métriques spécifiques aux « ronds » : rayon effectif ($R_e$), tolérance effective ($T_e$), pourcentage d'erreur, et le nombre de tours (nLaps).
+- Lecture des datas brut avec automatisation de la sélection des plages par record.
+- Création d'un loop pour chaque record
+- Affichage de chaque graph
 
 **Yann (Code des « Vagues » / Analyse de Performance)**
 
 Responsabilités de Code (Analyse de Vitesse et Débit):
 - Développer le code pour calculer les métriques de performance et de débit d'information (liées aux « vagues » de mouvement).
-- Calculer le temps de mouvement par tour ($MT/lap$).
-- Calculer le débit d'information effectif par tour ($ID_e/lap$).
-- Calculer le biais ($B_e$).
-- Calculer le débit de performance d'information ($IP_e$).
-- Intégrer ces calculs avec la partie d'Hugo.
+- Identifier le temps de mouvement par tour ($MT/lap$).
+- Séparer en 5 record différent les valuers acquise par le logiciel MouReMoco.
+- Pour chaque record, 1 graph composé de 3 courbe avec position de x/temps, y/temps et si le curseur est dans la cible ou non au cours du temps.
+- Affichages des 5 records sur un même graphique.
+- Affichage les "headlines informations des 2 csv. 
 
 **Malo (Vulgarisation, Rapport et Documentation)**
 
@@ -65,10 +68,10 @@ Responsabilités de Documentation et Rapport:
 
 - Rédiger le Rapport d'analyse (1-2 pages).
 - Expliquer les difficultés les plus intéressantes rencontrées (notamment la contrainte numpy/matplotlib) et les solutions apportées.
-- Détailler la méthode de vérification des résultats (concordance avec le fichier .marker.csv).
+- Détail des calculs de passage du fichier 001MOde_R1.csv au fichier 001MOde_R1.marker.csv
 - Expliquer la répartition des tâches et l'organisation de l'équipe (ce plan).
-- Rédiger le README général du dépôt (voir brouillon ci-dessous).
-- Préparer une vulgarisation scientifique des calculs et des concepts clés (Loi de Fitts, ID, IP) pour le rapport.
+- Rédiger le report général du dépôt.
+- Effectuer la tâche MouseReMoco et voir si le code est bien reproductible et s'exécute correctement. 
 
 **Tâches Communes** 
 
@@ -77,6 +80,7 @@ Exploration de MouseReMoCo.
 
 Lecture et Nettoyage des Données
 *Développer une fonction pour lire les fichiers .csv et .marker.csv sans utiliser pandas (nécessite la lecture ligne par ligne avec numpy ou les fonctions os/numpy.loadtxt avec soin pour l'en-tête).*
+Intégration du code complet dans un fichier.ipynb
 
 Génération de Données: 
 *Chaque membre du groupe à tester la génèration d'un fichier de données propre pour le test final.*
@@ -89,8 +93,6 @@ Vérification Croisée:
 | **13/11** | Organisation du travail, création du dépôt GitHub. | Hugo (Manager) | Dépôt GitHub créé, Rôles attribués, Plan de travail (SMART) défini. |
 | **19/11** | Compréhension approfondie de la tâche (MouseReMoCo) et attribution des tâches de codage. | Tous (Malo pour les concepts) | Premières fonctions de lecture de données, branches de travail créées. |
 | **28/11** | Revue des tâches, vérification des résultats, fusion finale (Merge). | Hugo (Manager) | Calculs et graphiques vérifiés, Rapport et README finalisés. |
-
-
 
 # Limites et difficultés courantes 
 
@@ -116,4 +118,5 @@ Le système compte les tours (nLaps). Le code doit reproduire la logique interne
 Les temps des markers (.marker.csv) et les temps des données brutes (.csv) doivent être synchronisés pour isoler chaque enregistrement (Rec001 à Rec005). Les temps sont en millisecondes Unix.
 
 <u>Solution:</u> Calculer le temps écoulé depuis le premier événement DoRecord pour aligner les échantillons de données sur les intervalles de 20.000 secondes définis par les markers.
+
 
