@@ -5,6 +5,8 @@ It automatically detects the differents recorsd (time segments), recenters X and
 and generates several plots (individual and combined views) to show the position of X and Y over the time,
 and if the mouse in on the target or not.
 
+This programis under license GPL v3 (see LICENSE)
+
 ---
 ## 📂 Project Contents
 
