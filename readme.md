@@ -1,30 +1,43 @@
-# A minimal template for data analysis with python 
+Circular Task — README
+**Prerequisites**
+Install Python 3.9+ and the required libraries:
+Numpy and MatPlotLib
 
-This is a minimal template for data analysis with python, intended to researchers in human movement sciences that are new to python.   
-Cloning this template for each new data analysis problem should facilitate data analyses with python and minimize potential errors.   
+**Expected files**
+The script uses two files located in the same folder:
+001MoDe_R1.csv — cursor data (timestamp, mouseX, mouseY, mouseInTarget)
+001MoDe_R1.marker.csv — events (start/pause/record)
 
-## Usage
-1. Download as a zip file (green button `< > Code` on the top right of the page)
-1. Expand the archive on your computer (e.g., in your `Download` folder). 
-1. Rename the extracted folder with the name of your new project (e.g., `ECG_analysis`)
-1. Move the new `ECG_analysis` folder where it should be located (e.g., in your `Documents/CodeProjects/` directory)
-1. In VSCode :
-    1. open the new project in a new window. 
-    1. open `main.ipynb` and click `Run all`
+If you are using your proper data (extract from RemCoco), import the good files with the good names : 
+1 file for the cursor data 
+1 file for the events 
 
-## Notebook template
-The `template.ipynb` notebook contains a minimal template for data analysis with python. It includes the following sections:
-- **Header:**
-  - The first cell will add a header to the notebook with the project title, author, date. 
-  - You should edit this cell to add your information.
-- **Data Analysis Cells:**
-  - The cells you will use for data analysis (e.g., loading data, preprocessing, modeling, etc.) go here.
-- **Export Cell:**
-  - The last cell will save the notebook as a HTML file next to the notebook file and open it in your web browser. 
-  - The HTML will include all the graphics, and will not show the cell numbers. 
-  - Cells tagged with `hide` will not be shown in the HTML file. 
-    - You can add the `hide` tag to any cell you do not want to appear in the HTML file (e.g., in VSCode, click on  `...` in the icon box in the top left of the cell)
+**Execution (run):**
+The script will automatically:
+Load the data (np.genfromtxt)
+Read and print the header metadata
+Read the markers (lines 4–26)
+Center coordinates around centerX / centerY
+Automatically detect the different records
 
-## Requirements
-- [A minimal Python environment for reproducible research in human movement sciences](https://github.com/DenisMot/Python-minimal-install) is my preferred solution.
-- Any IDE supporting python and jupyter notebooks is an alternative solution. 
+**Generate:**
+a circular plot for each record
+X / Y / InTarget curves over time
+a global trajectory plot
+a time-aligned rounds plot
+
+**Internal script organization**
+*The code performs:*
+Extraction of useful columns: timestamp, mouseX, mouseY, mouseInTarget
+Record detection via timestamp discontinuities
+Per-record extraction: relative time + centered coordinates
+
+*Plots:*
+target (inner/outer circles)
+points inside target (green) / outside target (red)
+complete trajectories
+time-series plots
+
+**Common issues**
+RuntimeWarning (NaN): normal if the file contains empty/malformed lines.
+Empty plots: check that the CSV actually contains non-zero X/Y values (except when you change records)
