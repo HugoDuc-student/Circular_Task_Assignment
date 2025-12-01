@@ -1,122 +1,120 @@
-<h1 align="center">Circular Task</h1>
+<h1 align="center">Circular Task Analysis Project</h1>
 
-*28 November 2025, 11:00*
-*by Devaux Yann, Duchemin Hugo, Bertrand- -Goarin Malo*
+*28 of November, 2025, 11:00 AM*
+*By Yann Devaux, Hugo Duchemin, Malo Bertrand-Goarin*
 
-Tools : 
-Fichier CSV (001MoDe_R1.csv and 001MoDe_R1.marker.csv).
-Application MouseReMoCO
-GPT : ChaptGPT, Copilot, Gemini 
+**Tools:**
+* CSV Files (`001MoDe_R1.csv` and `001MoDe_R1.marker.csv`)
+* Application: MouseReMoCo
+* AI Assistants: ChatGPT, Copilot, Gemini
 
-# 1. Définition du projet 
+---
 
-Le projet à été défini en suivant la construction d'objectif SMART, la répartition des tâches, un plan de travail. 
+# 1. Project Definition
 
-L'objectif global est de réaliser une analyse complète la tâche circulaire, enregistrée par MouseReMoCo pour la reproduire et livrer les résultats dans un dépôt GitHub public.
+The project was defined following the SMART goal framework, task distribution, and a detailed work plan.
 
-**Spécifique :** Reproduire les graphiques et recalculer les statistiques de la tâche de ciblage circulaire (Circular TTask) en utilisant les fichiers de données brutes fournis (...) et un fichier généré par l'équipe (main).
+The global objective is to conduct a complete analysis of the circular task recorded by MouseReMoCo, aiming to reproduce the results and deliver them in a public GitHub repository.
 
-**Mesurable :**
-Les résultats sont vérifiés par : 
-1) La correspondance des graphiques générés avec les résultats attendus. 
-2) La concordance des valeurs statistiques recalculées (Rec001 à Rec005) avec celles du fichier .marker.csv. 
-3) L'exécution réussie sur un fichier auto-généré. 
-4) La présence d'un rapport de 1 à 2 pages et d'une structure de dépôt propre.
+### SMART Objectives
 
-**Atteignable :** 
-Le temps imparti et la répartition des rôles (manager, code, rapport) rendent l'objectif aisément réalisable si les délais sont respecter et que la communication dans l'équipe est bonne. 
+* **Specific:** Reproduce the charts and recalculate the statistics for the Circular Target Task using the provided raw data files (`001MoDe_R1...`) and a team-generated file (`main`).
+* **Measurable:** Results are verified by:
+    1.  Correspondence between generated charts and expected results.
+    2.  Consistency of recalculated statistical values (Rec001 to Rec005) with those in the `.marker.csv` file.
+    3.  Successful execution on an auto-generated file.
+    4.  Presence of a 1-2 page report and a clean repository structure.
+* **Attainable:** The allocated time and role distribution (Manager, Code, Report) make the objective easily achievable, provided deadlines are respected and team communication remains effective.
+* **Realistic:** The team possesses the necessary skills and tools (Python, GitHub, MouseReMoCo) for movement data analysis and online collaboration.
+* **Time-bound:** The project is framed by established meeting dates: 11/13 (Organization), 11/19 (Comprehension/Tasks), 11/28 (Review/Merge), with delivery expected shortly after the final review.
 
-**Réaliste :** L'équipe dispose des compétences et des outils nécessaires (Python, GitHub, MouseReMoCo) pour l'analyse des données de mouvement et la collaboration en ligne.
+---
 
-**Temporelle :** Le projet est encadré par les dates de réunions établies: 13/11 (Organisation), 19/11 (Compréhension/Tâches), 28/11 (Revue/Merge), avec une livraison attendue peu après la réunion finale (non spécifiée, mais implicitement dans un délai court).
+# 2. Detailed Work Plan by Role
 
+### **Hugo (Manager & "Circles" Code)**
 
+**Managerial Responsibilities (Project Management):**
+* Create the GitHub repository based on the `Python-for-HMS-Template`.
+* Ensure access and collaboration rights for Yann and Malo.
+* Supervise contribution integration; remain the sole person authorized to merge Pull Requests (PRs).
+* Manage merge conflicts if necessary.
+* Ensure deadlines and objectives are met.
 
-## 2. Plan de travail détaillé par rôle
+**Coding Responsibilities (Circular Analysis):**
+* Develop the core code to read and analyze circular task data.
+* Verify center coordinates ($C_x, C_y$) and target radius ($R_{task}$) from header data.
+* Identify metrics specific to "circles": effective radius ($R_e$), effective tolerance ($T_e$), error percentage, and number of laps (`nLaps`).
+* Read raw data with automated range selection per record.
+* Create a loop for processing each record.
+* Display each graph.
 
-**Hugo (Manager et Code des « Ronds »)**
+### **Yann ("Waves" Code / Performance Analysis)**
 
-Responsabilités de Manager (Gestion de Projet):
+**Coding Responsibilities (Speed and Throughput Analysis):**
+* Develop code to calculate performance metrics and information throughput (related to movement "waves").
+* Identify movement time per lap ($MT/lap$).
+* Separate the values acquired by MouseReMoCo into 5 different records.
+* For each record, generate 1 graph composed of 3 curves: X position/time, Y position/time, and target status (inside/outside) over time.
+* Display all 5 records on a single superimposed graph.
+* Display headline information from both CSV files.
 
-- Créer le dépôt GitHub à partir du Python-for-HMS-Template.
-- Assurer l'accès et les droits de collaboration pour Yann et Malo.
-- Superviser l'intégration des contributions, être le seul à fusionner (merge) les pull requests (PRs).
-- Gérer les conflits de merge si nécessaire.
-- S'assurer que les dates butoirs et les objectifs sont respectés.
+### **Malo (Outreach, Report, and Documentation)**
 
-Responsabilités de Code (Analyse Circulaire):
-- Développer le code principal pour lire et analyser les données de la tâche circulaire.
-- Vérifier les coordonnées du centre ($C_x, C_y$) et du rayon cible ($R_{task}$) à partir des données d'en-tête.
-- Identifier les métriques spécifiques aux « ronds » : rayon effectif ($R_e$), tolérance effective ($T_e$), pourcentage d'erreur, et le nombre de tours (nLaps).
-- Lecture des datas brut avec automatisation de la sélection des plages par record.
-- Création d'un loop pour chaque record
-- Affichage de chaque graph
+**Documentation and Reporting Responsibilities:**
+* Write the Analysis Report (1-2 pages).
+* Explain the most interesting difficulties encountered (particularly the `numpy`/`matplotlib` constraint) and the solutions implemented.
+* Detail the calculations for transitioning from `001MoDe_R1.csv` to `001MoDe_R1.marker.csv`.
+* Explain task distribution and team organization (this plan).
+* Write the general repository report (`README`).
+* Perform the MouseReMoCo task to verify code reproducibility and correct execution.
 
-**Yann (Code des « Vagues » / Analyse de Performance)**
+### **Common Tasks**
 
-Responsabilités de Code (Analyse de Vitesse et Débit):
-- Développer le code pour calculer les métriques de performance et de débit d'information (liées aux « vagues » de mouvement).
-- Identifier le temps de mouvement par tour ($MT/lap$).
-- Séparer en 5 record différent les valuers acquise par le logiciel MouReMoco.
-- Pour chaque record, 1 graph composé de 3 courbe avec position de x/temps, y/temps et si le curseur est dans la cible ou non au cours du temps.
-- Affichages des 5 records sur un même graphique.
-- Affichage les "headlines informations des 2 csv. 
+* **MouseReMoCo Exploration:** Each member must experiment with the software to understand how data is recorded (cursor/target position, time, events).
+* **Data Reading & Cleaning:** Develop a function to read `.csv` and `.marker.csv` files **without using pandas** (requires line-by-line reading with `numpy` or `os`/`numpy.loadtxt` functions, handling headers carefully).
+* **Integration:** Integrate the complete code into a `.ipynb` file.
+* **Data Generation:** Each team member tests generating a clean data file for the final test.
+* **Cross-Verification:** Conduct a code and result review of teammates' work before merging.
 
-**Malo (Vulgarisation, Rapport et Documentation)**
+---
 
-Responsabilités de Documentation et Rapport:
+### Timeline
 
-- Rédiger le Rapport d'analyse (1-2 pages).
-- Expliquer les difficultés les plus intéressantes rencontrées (notamment la contrainte numpy/matplotlib) et les solutions apportées.
-- Détail des calculs de passage du fichier 001MOde_R1.csv au fichier 001MOde_R1.marker.csv
-- Expliquer la répartition des tâches et l'organisation de l'équipe (ce plan).
-- Rédiger le report général du dépôt.
-- Effectuer la tâche MouseReMoco et voir si le code est bien reproductible et s'exécute correctement. 
-
-**Tâches Communes** 
-
-Exploration de MouseReMoCo. 
-*Chaque membre doit jouer avec le logiciel pour comprendre comment les données sont enregistrées (position curseur/cible, temps, événements).*
-
-Lecture et Nettoyage des Données
-*Développer une fonction pour lire les fichiers .csv et .marker.csv sans utiliser pandas (nécessite la lecture ligne par ligne avec numpy ou les fonctions os/numpy.loadtxt avec soin pour l'en-tête).*
-Intégration du code complet dans un fichier.ipynb
-
-Génération de Données: 
-*Chaque membre du groupe à tester la génèration d'un fichier de données propre pour le test final.*
-
-Vérification Croisée: 
-*Réaliser une revue de code et des résultats des coéquipiers avant la fusion.*
-
-| Date | Objectif | Responsable Principal | Livrables/Résultats |
+| Date | Objective | Lead Responsible | Deliverables/Results |
 | :--- | :--- | :--- | :--- |
-| **13/11** | Organisation du travail, création du dépôt GitHub. | Hugo (Manager) | Dépôt GitHub créé, Rôles attribués, Plan de travail (SMART) défini. |
-| **19/11** | Compréhension approfondie de la tâche (MouseReMoCo) et attribution des tâches de codage. | Tous (Malo pour les concepts) | Premières fonctions de lecture de données, branches de travail créées. |
-| **28/11** | Revue des tâches, vérification des résultats, fusion finale (Merge). | Hugo (Manager) | Calculs et graphiques vérifiés, Rapport et README finalisés. |
+| **13/11** | Work organization, GitHub repository creation. | Hugo (Manager) | Repository created, Roles assigned, SMART plan defined. |
+| **19/11** | Deep understanding of the task (MouseReMoCo) and coding task assignment. | All (Malo for concepts) | First data reading functions, work branches created. |
+| **28/11** | Task review, result verification, final Merge. | Hugo (Manager) | Calculations and graphs verified, Report and README finalized. |
 
-# Limites et difficultés courantes 
+---
 
-*Contrainte Technique : numpy et matplotlib Uniquement*
+# 3. Limitations and Common Difficulties
 
-<u>Difficulté 1:</u> Lecture de Fichiers CSV Non StandardLe fichier .csv contient un en-tête non standard (métadonnées). L'utilisation de pandas aurait rendu cela trivial.
+### *Technical Constraint: Numpy and Matplotlib Only*
 
-<u>Solution:</u> Il faudra lire l'en-tête (les lignes de commentaires commençant par un caractère spécifique, souvent # ou % si ce n'est pas déjà le cas) pour extraire les paramètres (e.g., $R_{e}, R_{task}, ID$) avant de charger les données brutes (temps, x, y) dans un tableau numpy en spécifiant l'argument skiprows.
+**Difficulty 1: Reading Non-Standard CSV Files**
+The `.csv` file contains a non-standard header (metadata). Using `pandas` would have made this trivial.
 
-<u>Difficulté 2:</u> Représentation Graphique Avancéematplotlib est puissant mais demande plus de code pour des graphiques spécifiques (trajectoires X-Y, vitesse en fonction de l'angle) que des outils orientés statistiques.
+* **Solution:** We must read the header (lines starting with specific characters or simply the first N lines) to extract parameters (e.g., $R_{e}, R_{task}, ID$) before loading the raw numerical data (time, x, y) into a numpy array using the `skip_header` argument.
 
-<u>Solution:</u> Structurer clairement les fonctions de traçage et utiliser les fonctionnalités de sous-graphiques (plt.subplots()).
+**Difficulty 2: Advanced Graphical Representation**
+`matplotlib` is powerful but requires more code for specific charts (X-Y trajectories, velocity vs. angle) compared to statistical-oriented tools.
 
+* **Solution:** Clearly structure plotting functions and utilize subplot features (`plt.subplots()`) to organize visuals efficiently.
 
-*Difficulté Conceptuelle : Interprétation des Données*
+### *Conceptual Difficulty: Data Interpretation*
 
-<u>Difficulté 3:</u> Détection Précise des Tours (Laps)
-Le système compte les tours (nLaps). Le code doit reproduire la logique interne de MouseReMoCo pour déterminer quand un tour est réussi ou complété, souvent basé sur le passage à un angle de 360 degrés ou un critère de franchissement d'un axe.
+**Difficulty 3: Precise Lap Detection**
+The system counts laps (`nLaps`). The code must reproduce MouseReMoCo's internal logic to determine when a lap is successful or completed, typically based on crossing a 360-degree angle or a specific axis.
 
-<u>Solution:</u> Examiner la documentation de la tâche CircularTarget pour trouver la définition exacte d'un « tour ».
+* **Solution:** Examine the CircularTarget task documentation to find the exact definition of a "lap".
 
-<u>Difficulté 4:</u> Synchronisation des Markers
-Les temps des markers (.marker.csv) et les temps des données brutes (.csv) doivent être synchronisés pour isoler chaque enregistrement (Rec001 à Rec005). Les temps sont en millisecondes Unix.
+**Difficulty 4: Marker Synchronization**
+Timestamps in markers (`.marker.csv`) and raw data (`.csv`) must be synchronized to isolate each recording (Rec001 to Rec005). Times are in Unix milliseconds.
 
-<u>Solution:</u> Calculer le temps écoulé depuis le premier événement DoRecord pour aligner les échantillons de données sur les intervalles de 20.000 secondes définis par les markers.
+* **Solution:** Calculate the time elapsed since the first `DoRecord` event to align data samples with the 20.000-second intervals defined by the markers.
 
+**Difficulty 5: Respect the scales of the figure without modyfing itself**
 
+* **Solution:** Using the : *ax.set_label* to change the scale without crush it
