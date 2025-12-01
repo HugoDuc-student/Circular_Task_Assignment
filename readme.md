@@ -2,7 +2,7 @@
 
 ## This Python script processes mouse trajectory data (CSV), automatically detects recording sessions, and generates visualization plots.
 
-### This Project is under GPL v3 licence (see LICENCE)
+### This Project is under GPL v3 licence (have to see LICENCE)
 
 ### Requirements
 
